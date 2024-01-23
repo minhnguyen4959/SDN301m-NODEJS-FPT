@@ -2,6 +2,8 @@ import express from "express";
 import { productController } from "../controllers/index.js";
 const productRouter = express.Router();
 
+
+
 //GET: /products => get all products
 productRouter.get('/', productController.getAllProducts)
 
@@ -9,8 +11,6 @@ productRouter.get('/', productController.getAllProducts)
 productRouter.get('/:id', productController.getProductByObjectId)
 
 //POST: /products => create a new product
-productRouter.post('/', async(req, res) => {
-    res.send("/products")
-})
+productRouter.post('/', productController.createProduct)
 
 export default productRouter;

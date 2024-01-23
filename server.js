@@ -1,6 +1,8 @@
 import express from "express";
 import * as dotenv from "dotenv";
 import {productRouter} from './routes/index.js';
+import connectDB from "./database.js";
+
 
 const app = express();
 
@@ -8,11 +10,18 @@ const app = express();
 dotenv.config();
 const port = process.env.PORT || 8080;
 
-// console.log(process.env)
+//middleware bổ sung 
+app.use(express.json());
+
+
 app.use('/products', productRouter)
 
 
 
 app.listen(port, async () => {
+    connectDB();
     console.log(`ok ${port}`);
 });
+
+//model: name unique
+//
