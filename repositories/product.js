@@ -1,4 +1,5 @@
 import Products from "../models/product.js"
+import mongoose from "mongoose"
 
 const create = async({name, price, description, category}) => {
     try {
@@ -19,7 +20,8 @@ const list = async() => {
 }
 const findOne = async(id) => {
     try {
-        const products = await Products.find({_id: id});
+        const objectId = new mongoose.Types.ObjectId(id);
+        const products = await Products.findOne({ _id: objectId }).exec();
         console.log(products);
         return products;
     } catch (error) {
@@ -48,5 +50,6 @@ export default {
     create,
     list,
     update,
+    findOne,
     remove,
 }

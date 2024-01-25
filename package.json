@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --watch server"
+    "start": "nodemon server",
+    "debug": "node inspect server.js"
   },
   "keywords": [
     "nodejs"
@@ -14,8 +15,10 @@
   "author": "NQM",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongoose": "^8.1.0"
+    "mongoose": "^8.1.0",
+    "nodemon": "^3.0.3"
   }
 }

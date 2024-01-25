@@ -2,6 +2,7 @@ import express from "express";
 import * as dotenv from "dotenv";
 import {productRouter} from './routes/index.js';
 import connectDB from "./database.js";
+import cors from "cors"
 
 
 const app = express();
@@ -13,8 +14,11 @@ const port = process.env.PORT || 8080;
 //middleware bổ sung 
 app.use(express.json());
 
+//cors is middleware allow access router FE -> BE
+app.use(cors());
 
 app.use('/products', productRouter)
+
 
 
 
@@ -23,5 +27,3 @@ app.listen(port, async () => {
     console.log(`ok ${port}`);
 });
 
-//model: name unique
-//
